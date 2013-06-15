@@ -1,0 +1,133 @@
+\documentclass[a4paper,12pt,smallheadings]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage[onehalfspacing]{setspace}
+
+%opening
+\title{Business Process Change - Formulars}
+
+\addtolength{\textheight}{2cm}
+\addtolength{\voffset}{-1cm}
+
+\makeatletter
+\let\thetitle\@title
+\makeatother
+
+\begin{document}
+\thetitle
+\hrule
+
+\paragraph{6 $\sigma$}
+
+\subparagraph{Zufallsgrößen}  \hfill
+
+$\mu$ := Mittelwert
+
+$\sigma$ := Standardabweichung
+
+$P\left( X \leq x\right) := P\left( X \in \left( -\infty,x\right] \right) $
+
+\subparagraph{Normalverteilung} \hfill
+
+$F_{\mu,\sigma}\left(x\right)   := P\left(X \leq x\right) = \frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^{x} e^{-\frac{{\left( t-\mu\right)}^2}{2\sigma^2}} dt$
+
+$F_{\mu,\sigma}\left(x \right) = F_{0,1}\left(\frac{x-\mu}{\sigma} \right)$
+
+$F_{0,1}\left(-x \right) = 1-F_{0,1}\left(x \right) $
+
+\subparagraph{Konfidenzintervalle} \hfill
+
+$p$ := Anteil an der Gesamtheit
+
+$n$ := Größe der Stichprobe
+
+$S_n$ := Stichprobe
+
+$\alpha$ := Fehlerniveau $\left(> 0 \right)$
+
+$\delta $ := Genauigkeit der Vorhersage $\left( >0  \right)$
+
+$\sigma = \sqrt{\frac{p\left(1-p)\right)}{n}} \leq \frac{1}{2\sqrt{n}}$
+
+$\delta \geq \frac{1}{2\sqrt{n}}F_{0,1}^{-1}\left( 1- \frac{\alpha}{2}\right) \implies P\left( \left| S_n - p \right| \leq \delta \right) \geq 1 - \alpha $
+
+\paragraph{Prozessanalyse}
+
+\subparagraph{Kennzahlen} \hfill
+
+WIP := Work-In-Process (Anzahl der Jobs in Bearbeitung (oder wartend))
+
+$\lambda$ (Throughput) := Durchsatz
+
+CT := Cycle Time (Zeit für die ein Job im Prozess verbringt) 
+
+\subparagraph{Little's Law}
+
+$WIP = \lambda * CT$
+
+\subparagraph{Cycle Time Analysis}
+\begin{align*}
+&CT\left(a_1.P_1+...+a_n.P_n\right)&&= p_1\bullet\left(c\left(a_1\right)+CT\left(P_1\right)\right)+...+p_n\bullet\left(c\left(a_n\right)+CT\left(P_n\right)\right) \\
+&CT\left(P_1|P_2\right) &&= max\left\lbrace CT\left(P_1\right), CT\left(P_2\right)\right\rbrace \\
+&CT\left(A\right) &&= CT\left(P_A\right) \text{ for a defintion } A = P_A \\
+&CT\left(\nu a P\right) &&= CT\left(P\right) \text{ with } c\left(a\right) := 0 \\
+&CT\left(\epsilon\right) &&= 0
+\end{align*}
+
+\subparagraph{Capacity Analysis} \hfill
+
+\begin{math}
+\delta(a,b) = \left\lbrace
+	\begin{array}{l l}
+		1 & \quad \text{if } a=b \\
+		0 & \quad \text{otherwise}
+	\end{array} \right.
+\end{math}
+\begin{align*}
+&\#\left(a,P\right) := \\
+&\sum_{i=1}^{n} p_i\left(\delta\left(a,a\right)+\#\left(a,P_1\right)\right),& &\text{if } P=a_1.P_1+...+a_n.P_n \\
+&0,& &\text{if } P=\epsilon \\
+&\#\left(a,P_1\right) + \#\left(a,P_2\right),& &\text{if } P=P_1|P_2 \\
+&\#\left(a,P_a\right), & &\text{if } P = A = P_A \\
+&\left(1-\delta\left(a,a'\right)\right) \#\left(a,P\right),& &\text{if } P = \nu a' P
+\end{align*}
+
+$Capacity\left(R,P\right) := \frac{k}{\#\left(a_1,P\right)c\left(a_1\right) + ... + \#\left(a_m,P\right)c\left(a_m\right)} \quad$ R an actor with k resources
+
+$Capacity\left(P\right):= min\left\lbrace Capacity\left(R,P\right) | \text{ R actor for P }\right\rbrace$
+
+$Utilization \left( R,P\right) := \frac{\lambda}{Capacity \left(R,P\right)} \quad \left( \leq 1\right)$
+
+\paragraph{Queuing Systems}
+
+\subparagraph{Utilization factor} 
+$\rho = \frac{\lambda}{c\mu}$ 
+\quad (Assumption: $\frac{\lambda}{c\mu} < 1$)
+
+$WIP = \sum_{n=0}^{K} n P_n$
+
+$Q = \sum_{n=c}^{K} (n-c) P_n$
+
+\subparagraph{Balance Equations} \hfill
+
+$n > 0: \quad \lambda P_{n-1} + min\left\{n+1,c\right\}\mu P_{n+1} = \lambda P_n + min\left\{ n, c \right\} \mu P_n $
+
+$n = 0: \quad \mu P_1 = \lambda P_0$
+
+\hfill
+
+\underline{Für $K \neq \infty$:}
+
+$n = K: \quad \lambda P_{n-1} = min\left\{ n,c \right\} \mu P_{n} $
+
+\hfill
+
+\underline{Für $K = \infty$:}
+
+$WIP = \frac{\lambda}{\mu} + P_0 \frac{1}{c!} \left(\frac{\lambda}{\mu}\right)^c \frac{\rho}{\left(1-\rho\right)^2}$
+
+$Q = WIP - \frac{\lambda}{\mu}$
+
+$CT_Q = CT_Total - \frac{1}{\mu}$
+
+\end{document}
