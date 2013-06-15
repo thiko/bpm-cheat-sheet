@@ -128,12 +128,19 @@ $WIP = \frac{\lambda}{\mu} + P_0 \frac{1}{c!} \left(\frac{\lambda}{\mu}\right)^c
 
 $Q = WIP - \frac{\lambda}{\mu}$
 
-$CT_Q = CT_Total - \frac{1}{\mu}$
+$CT_Q = CT_{Total} - \frac{1}{\mu}$
+
+$1 = P_0 + P_1 + P_2 +... \implies P_0 = \left( \sum_{n=0}^{c-1} \frac{\left(\frac{\lambda}{\mu}\right)^n}{n!} +
+\frac{ \left(\frac{\lambda}{\mu}\right)^c}{c! \left(1-\rho\right)} \right)^{-1}$
+
+$P_{n+1} = \frac{1}{\left(n+1\right)!} \left(\frac{\lambda}{\mu}\right)^{n+1}P_0$ \quad für $0 \leq n < c$
+
+$P_n = \rho^{n-c} \frac{1}{c!} \left(\frac{\lambda}{\mu}\right)^c P_0$ \quad für $ n \geq c$
 
 \paragraph{Prozessmodell Änderungen} 
 Kontext: Ein Term der [] enthält
 
-Sei $P \in \phi$, dann ist $S = {P' | P \rightarrow^* P'}$ die Menge aller erreichbaren Zustände (von P)
+Sei $P \in \wp$, dann ist $S = {P' | P \rightarrow^* P'}$ die Menge aller erreichbaren Zustände (von P)
 
 Sei $T_p = (S , \rightarrow, \downarrow)$ ein Transitionssystem für P
 
@@ -146,9 +153,9 @@ Sei $P \rightarrow^* P'$ über die Transitionssequenz $(P_{i-1} \overset{\alpha_
 
 \subparagraph{Schwach Äquivalent}
 
-Seien P und Q Prozessausdrücke in $\phi$
+Seien P und Q Prozessausdrücke in $\wp$
 
-Eine binäre Relation S auf $\phi$ heißt schwach äquivalent, wenn gilt:
+Eine binäre Relation S auf $\wp$ heißt schwach äquivalent, wenn gilt:
 
 \begin{eqnarray}
 (P \overset{\tau}{\rightarrow} P') \Rightarrow (\exists Q': Q \Rightarrow Q' \wedge (P', Q') \in S) \\
