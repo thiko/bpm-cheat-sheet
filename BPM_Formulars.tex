@@ -130,4 +130,39 @@ $Q = WIP - \frac{\lambda}{\mu}$
 
 $CT_Q = CT_Total - \frac{1}{\mu}$
 
+\paragraph{Prozessmodell Änderungen} 
+Kontext: Ein Term der [] enthält
+
+Sei $P \in \phi$, dann ist $S = {P' | P \rightarrow^* P'}$ die Menge aller erreichbaren Zustände (von P)
+
+Sei $T_p = (S , \rightarrow, \downarrow)$ ein Transitionssystem für P
+
+Sei $P \rightarrow^* P'$ über die Transitionssequenz $(P_{i-1} \overset{\alpha_i}{\rightarrow} P_i)_{i \in \{1, \dots n\}}$
+\begin{itemize}
+\item $(P = P_0, \alpha_1, P_1)(P_1, \alpha_2, P_2) \dots (P_{n-1}, \alpha_n, P_n = P')$ wird Instanz von P genannt (ist korrekt typisiert in P)
+\item $cs(w) := P_n$ ist der aktuelle Zustand
+\item $h(w): \alpha_1\alpha_2\alpha_3 \dots \alpha_n$ ist die Historie
+\end{itemize}
+
+\subparagraph{Schwach Äquivalent}
+
+Seien P und Q Prozessausdrücke in $\phi$
+
+Eine binäre Relation S auf $\phi$ heißt schwach äquivalent, wenn gilt:
+
+\begin{eqnarray}
+(P \overset{\tau}{\rightarrow} P') \Rightarrow (\exists Q': Q \Rightarrow Q' \wedge (P', Q') \in S) \\
+(P \overset{\alpha}{\rightarrow} P') \overset{\alpha}{\Rightarrow} (\exists Q': Q \Rightarrow Q' \wedge (P', Q') \in S) \\
+P \downarrow \Rightarrow (\exists Q':Q \Rightarrow Q' \wedge Q' \downarrow)
+\end{eqnarray}
+Wir schreiben $P \leq Q$ wenn P von Q simuliert wird.
+
+\subparagraph{Range Region \& Ersetzung}
+TODO
+
+\subparagraph{Korrektheit}
+TODO
+
+
+
 \end{document}
